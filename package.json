@@ -15,6 +15,9 @@
   },
   "scripts": {
     "build:prod": "ng build",
+    "docker:build": "npm run build:prod && docker build -t 192.168.178.35:5000/baby-monitor-ui:latest .",
+    "docker:push": "docker push 192.168.178.35:5000/baby-monitor-ui:latest",
+    "docker:release": "npm run docker:build && npm run docker:push",
     "lint": "exit 0",
     "ng": "ng",
     "pre-commit": "npm run lint",
