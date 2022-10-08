@@ -7,11 +7,11 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./audio.component.scss']
 })
 export class AudioComponent implements OnInit {
-  public audioSource: string = '';
+  public source: string = '';
 
   constructor(private readonly configService: ConfigService) { }
 
   ngOnInit(): void {
-    this.configService.getAudioUrl().subscribe((url: string): void => { this.audioSource = url; });
+    this.configService.getAudioUrl().subscribe((source: string): void => { this.source = source; });
   }
 }

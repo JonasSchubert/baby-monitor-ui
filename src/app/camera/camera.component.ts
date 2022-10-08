@@ -7,11 +7,19 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./camera.component.scss']
 })
 export class CameraComponent implements OnInit {
-  public videoSource: string = '';
+  public source: string = '';
 
   constructor(private readonly configService: ConfigService) { }
 
+  get height(): string {
+    return this.configService.isMobile ? `${window.innerWidth * 0.85 * 0.75}` : '480';
+  }
+
+  get width(): string {
+    return this.configService.isMobile ? `${window.innerWidth * 0.85}`  : '640';
+  }
+
   ngOnInit(): void {
-    this.configService.getStreamMjpegUrl().subscribe((url: string): void => { this.videoSource = url; });
+    this.configService.getStreamMjpegUrl().subscribe((source: string): void => { this.source = source; });
   }
 }
