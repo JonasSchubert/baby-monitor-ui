@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, concatAll, map } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  concatAll,
+  map,
+  of
+} from 'rxjs';
 import { ConfigService } from '../config.service';
 import { Healthstatus } from '../healthstatus';
 import { HttpClient } from '@angular/common/http';
@@ -33,6 +39,6 @@ export class FooterComponent implements OnInit {
   }
 
   private loadData(): Observable<Healthstatus> {
-    return this.configService.getHealthcheckUrl().pipe(map((url: string) => this.httpClient.get<Healthstatus>(url)), concatAll());
+    return this.configService.getHealthcheckUrl().pipe(map((url: string) => this.httpClient.get<Healthstatus>(url)), concatAll(), catchError(() => of({ status: 'error' })));
   }
 }

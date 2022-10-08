@@ -7,8 +7,10 @@ import {
 } from './sensors.constants';
 import {
   Observable,
+  catchError,
   concatAll,
   map,
+  of,
   tap
 } from 'rxjs';
 import { Climate } from './climate';
@@ -32,11 +34,15 @@ export class SensorsComponent implements OnInit {
     private readonly notificationsService: NotificationsService) { }
 
   ngOnInit(): void {
-    const handleStatus = (climate: Climate) => (this.climate = climate);
+    const handleStatus = (climate: Climate | null) => {
+      if (climate) {
+        this.climate = climate;
+      }
+    };
 
-    this.loadData().pipe(tap((climate: Climate) => this.checkForNeedOfNotification(climate)), tap(handleStatus)).subscribe(); // First call to immediately display data without waiting for first interval
+    this.loadData().pipe(tap((climate: Climate | null) => this.checkForNeedOfNotification(climate)), tap(handleStatus)).subscribe(); // First call to immediately display data without waiting for first interval
     this.requestIntervall = setInterval((): void => {
-      this.loadData().pipe(tap((climate: Climate) => this.checkForNeedOfNotification(climate)), tap(handleStatus)).subscribe();
+      this.loadData().pipe(tap((climate: Climate | null) => this.checkForNeedOfNotification(climate)), tap(handleStatus)).subscribe();
     }, 5 * 1000);
 
     this.notificationsService.requestPermission();
@@ -74,7 +80,11 @@ export class SensorsComponent implements OnInit {
     return (value: number): string => `${value.toFixed(2)} ${unit}`;
   }
 
-  private checkForNeedOfNotification(climate: Climate): void {
+  private checkForNeedOfNotification(climate: Climate | null): void {
+    if (!climate) {
+      return;
+    }
+
     let title = '';
 
     if (this.evaluateTemperatureClass(climate.temperature.sensor) === GAUGE_CLASS.DANGER) {
@@ -96,7 +106,7 @@ export class SensorsComponent implements OnInit {
     }
   }
 
-  private loadData(): Observable<Climate> {
-    return this.configService.getClimateUrl().pipe(map((url: string) => this.httpClient.get<Climate>(url)), concatAll());
+  private loadData(): Observable<Climate | null> {
+    return this.configService.getClimateUrl().pipe(map((url: string) => this.httpClient.get<Climate>(url)), concatAll(), catchError(() => of(null)));
   }
 }
