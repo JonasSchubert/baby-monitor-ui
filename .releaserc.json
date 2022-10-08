@@ -1,0 +1,3 @@
+{
+  "extends": "@jsp/semantic-release/configs/.releaserc.main-full.json"
+}

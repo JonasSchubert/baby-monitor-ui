@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-icon aria-hidden="false" aria-label="Bedroom baby icon" fontIcon="crib" style="margin-right: .5rem;"></mat-icon>
+  <span>Baby Monitor</span>
+  <div style="flex-grow: 1;"></div>
+  <app-audio></app-audio>
+</mat-toolbar>
+
+<div style="background-color: #333; display: flex; flex-direction: column; height: calc(100vh - 8.5rem); overflow: auto; padding: 1rem;">
+  <app-camera style="padding-bottom: 1rem;"></app-camera>
+  <app-sensors style="padding-bottom: 1rem;"></app-sensors>
+</div>
+
+<app-footer></app-footer>

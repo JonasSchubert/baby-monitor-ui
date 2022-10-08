@@ -1,0 +1,62 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "description": "",
+  "author": {
+    "name": "Jonas Schubert",
+    "url": "https://code.sinthu-und-jonas.de/jonas-schubert/",
+    "email": "jonas.schubert.projects@web.de"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://code.sinthu-und-jonas.de/jsa/baby-monitor/ui.git"
+  },
+  "scripts": {
+    "build:prod": "ng build",
+    "lint": "exit 0",
+    "ng": "ng",
+    "pre-commit": "npm run lint",
+    "pre-push": "npm run lint && npm run test:unit && npm run build:prod",
+    "prepare": "is-ci || husky install",
+    "start": "ng serve",
+    "test:unit": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.5",
+    "@angular/cdk": "^14.2.4",
+    "@angular/common": "^14.2.5",
+    "@angular/compiler": "^14.2.5",
+    "@angular/core": "^14.2.5",
+    "@angular/forms": "^14.2.5",
+    "@angular/material": "^14.2.4",
+    "@angular/platform-browser": "^14.2.5",
+    "@angular/platform-browser-dynamic": "^14.2.5",
+    "angular-gauge": "^4.0.0",
+    "rxjs": "^7.5.7",
+    "tslib": "^2.4.0",
+    "zone.js": "^0.11.8"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.5",
+    "@angular/cli": "^14.2.5",
+    "@angular/compiler-cli": "^14.2.5",
+    "@types/jasmine": "^4.3.0",
+    "husky": "^8.0.1",
+    "is-ci": "^3.0.1",
+    "jasmine-core": "^4.4.0",
+    "karma": "^6.4.1",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": ">=14.8.1 <17.0.0",
+    "npm": ">=8.1.0"
+  }
+}

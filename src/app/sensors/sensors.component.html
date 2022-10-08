@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-title>Sensors</mat-card-title>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="10rem">
+      <mat-grid-tile>
+        Temperature
+        <mwl-gauge
+          [animated]="true"
+          [animationDuration]="1"
+          [class]="evaluateTemperatureClass(climate.temperature.sensor)"
+          [dialEndAngle]="180"
+          [dialStartAngle]="0"
+          [label]="getLabel(climate.temperature.unit)"
+          [max]="30"
+          [min]="10"
+          [value]="climate.temperature.sensor"
+        >
+        </mwl-gauge>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        Humidity
+        <mwl-gauge
+          [animated]="true"
+          [animationDuration]="1"
+          [class]="evaluateHumidityClass(climate.humidity.sensor)"
+          [dialEndAngle]="180"
+          [dialStartAngle]="0"
+          [label]="getLabel(climate.humidity.unit)"
+          [max]="90"
+          [min]="10"
+          [value]="climate.humidity.sensor"
+        >
+        </mwl-gauge>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        CPU Temperature
+        <mwl-gauge
+          [animated]="true"
+          [animationDuration]="1"
+          [class]="evaluateServerTemperatureClass(climate.temperature.cpu)"
+          [dialEndAngle]="180"
+          [dialStartAngle]="0"
+          [label]="getLabel(climate.temperature.unit)"
+          [max]="100"
+          [min]="20"
+          [value]="climate.temperature.cpu"
+        >
+        </mwl-gauge>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        GPU Temperature
+        <mwl-gauge
+          [animated]="true"
+          [animationDuration]="1"
+          [class]="evaluateServerTemperatureClass(climate.temperature.gpu)"
+          [dialEndAngle]="180"
+          [dialStartAngle]="0"
+          [label]="getLabel(climate.temperature.unit)"
+          [max]="100"
+          [min]="20"
+          [value]="climate.temperature.gpu"
+        >
+        </mwl-gauge>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

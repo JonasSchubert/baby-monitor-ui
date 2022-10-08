@@ -1,0 +1,9 @@
+{
+  "serverIp": "http://192.168.178.31",
+  "serverPort": "8080",
+  "audioPort": "8081",
+  "climateApi": "climate",
+  "healtcheckApi": "healthcheck",
+  "latestJpegApi": "latest.jpeg",
+  "streamMjpegApi": "stream.mjpeg"
+}
