@@ -5,5 +5,7 @@ export interface Config {
   climateApi: string;
   healtcheckApi: string;
   latestJpegApi: string;
+  lullabyListApi: string;
+  lullabySongApi: string;
   streamMjpegApi: string;
 }

@@ -37,6 +37,14 @@ export class ConfigService {
     return this.getConfig().pipe(map((config: Config): string => `${config.serverIp}:${config.serverPort}/${config.latestJpegApi}`));
   }
 
+  public getLullabyListUrl(): Observable<string> {
+    return this.getConfig().pipe(map((config: Config): string => `${config.serverIp}:${config.serverPort}/${config.lullabyListApi}`));
+  }
+
+  public getLullabySongUrl(): Observable<string> {
+    return this.getConfig().pipe(map((config: Config): string => `${config.serverIp}:${config.serverPort}/${config.lullabySongApi}`));
+  }
+
   public getStreamMjpegUrl(): Observable<string> {
     return this.getConfig().pipe(map((config: Config): string => `${config.serverIp}:${config.serverPort}/${config.streamMjpegApi}`));
   }

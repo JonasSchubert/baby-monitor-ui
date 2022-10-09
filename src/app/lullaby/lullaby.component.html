@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-title style="display: flex;">
+    Lullaby
+    <div style="flex-grow: 1;"></div>
+    <div style="font-size: small;">
+      {{ song.volume }}
+      <mat-slider [disabled]="song.mute" min="0" max="100" step="1" style="width: 15rem" thumbLabel [(ngModel)]="song.volume" (ngModelChange)="onVolumeChange($event)"></mat-slider>
+      <mat-checkbox style="margin-left: 1rem;" [(ngModel)]="song.mute" (ngModelChange)="onMuteChange($event)">Mute</mat-checkbox>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let track of list">
+        <h4 matLine> {{ cleanUpTrackName(track) }} </h4>
+        <div style="display: flex;">
+          <button (click)="onPlay(track)" mat-icon-button aria-label="Play song">
+            <mat-icon>play_circle</mat-icon>
+          </button>
+          <button (click)="onStop()" mat-icon-button aria-label="Stop song">
+            <mat-icon>stop_circle</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

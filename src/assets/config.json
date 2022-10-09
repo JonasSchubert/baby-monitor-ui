@@ -5,5 +5,7 @@
   "climateApi": "climate",
   "healtcheckApi": "healthcheck",
   "latestJpegApi": "latest.jpeg",
+  "lullabyListApi": "lullaby-list",
+  "lullabySongApi": "lullaby-song",
   "streamMjpegApi": "stream.mjpeg"
 }
