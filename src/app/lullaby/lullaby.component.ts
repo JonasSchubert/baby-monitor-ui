@@ -18,10 +18,17 @@ export class LullabyComponent implements OnInit {
     this.lullabiesService
       .load()
       .subscribe((list: string[]) => (this.list = list));
+    this.lullabiesService
+      .getSong()
+      .subscribe((song: LullabySong | null): void => {
+        if (!!song) {
+          this.song = song;
+        }
+      });
   }
 
-  public cleanUpTrackName(track: string): string {
-    return track.replace('/mnt/lullaby-songs/', '');
+  public evaluateTrackTextColor(track: string): string {
+    return this.song.track === track ? '#69f0ae' : '';
   }
 
   public onMuteChange(mute: boolean): void {
@@ -47,6 +54,10 @@ export class LullabyComponent implements OnInit {
   private updateSong(): void {
     this.lullabiesService
       .updateSong(this.song)
-      .subscribe();
+      .subscribe((song: LullabySong | null): void => {
+        if (!!song) {
+          this.song = song;
+        }
+      });
   }
 }

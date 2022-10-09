@@ -11,7 +11,7 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let track of list">
-        <h4 matLine> {{ cleanUpTrackName(track) }} </h4>
+        <h4 matLine [ngStyle]="{ 'color': evaluateTrackTextColor(track) }"> {{ track }} </h4>
         <div style="display: flex;">
           <button (click)="onPlay(track)" mat-icon-button aria-label="Play song">
             <mat-icon>play_circle</mat-icon>
