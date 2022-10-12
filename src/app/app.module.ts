@@ -20,6 +20,8 @@ import { SensorsComponent } from './sensors/sensors.component';
 import { CameraComponent } from './camera/camera.component';
 import { AudioComponent } from './audio/audio.component';
 import { FooterComponent } from './footer/footer.component';
+import { HealthcheckColorPipe } from './footer/healthcheck-color.pipe';
+import { HealthcheckTextPipe } from './footer/healthcheck-text.pipe';
 import { LullabyComponent } from './lullaby/lullaby.component';
 
 @NgModule({
@@ -29,7 +31,9 @@ import { LullabyComponent } from './lullaby/lullaby.component';
     CameraComponent,
     AudioComponent,
     FooterComponent,
-    LullabyComponent
+    LullabyComponent,
+    HealthcheckColorPipe,
+    HealthcheckTextPipe
   ],
   imports: [
     FormsModule,
