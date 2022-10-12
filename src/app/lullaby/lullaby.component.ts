@@ -8,9 +8,9 @@ import { LullabySong } from './lullaby-song';
   styleUrls: ['./lullaby.component.scss']
 })
 export class LullabyComponent implements OnInit {
-  list: string[] = [];
+  public list: string[] = [];
 
-  song: LullabySong = { mute: false, status: '', track: '', volume: 30 };
+  public song: LullabySong = { mute: false, status: '', track: '', volume: 30 };
 
   constructor(private readonly lullabiesService: LullabiesService) { }
 
