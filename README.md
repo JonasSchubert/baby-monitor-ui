@@ -1,30 +1,60 @@
+<div style="text-align: center;">
+<img height="128" src="./app.png">
+</div>
+
 # Baby Monitor - UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+> !!!\
+> The [server](https://code.sinthu-und-jonas.de/jsa/baby-monitor/server) project is required to use this website.\
+> !!!
+
+This Angular project was created while we were pregnant. I wanted to create a server to keep track of our baby, the surrounding temperature and be able to play some lullabies to calm her down.
+
+The UI uses the latest (`14`, as of 10/2022) Angular version and a python server to provide and control the mentioned functionalities.
 
 ![screenshot](./screenshots/screenshot.jpeg)
 
-## Development server
+## For developers
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
 
-## Code scaffolding
+### Development server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Install all dependencies with `npm install` and then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Container
+
+I am running this website on a different machine then the server.
+
+The server is running direcetly on a Raspberry Pi 4 to access and utilies the hardware and to avoid to install any more tools or services limiting the resources of my Pi. I am running a minimal version of Raspbian on this machine.
+
+The UI is containerized using Docker. This is deplyoed to an Intel NUC with Ubuntu Server and installed Docker.
+
+You can create a Docker container while running `npm run docker:build`. You should adjust the container name. It points to my private registry.
+
+If you also have a private registry, you can run `npm run docker:release` to build and publish the container.
+
+### Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+> I did not at any unit tests. ;)
+
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+> I did not at any end-to-end tests. ;)
+
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
@@ -41,7 +71,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ```
 MIT License
 
-Copyright (c) 2021-2022 Jonas Schubert
+Copyright (c) 2022 Jonas Schubert
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
